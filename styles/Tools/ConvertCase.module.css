@@ -1,0 +1,8 @@
+.area {
+  margin: 20px auto;
+  width: 50%;
+}
+.area textarea {
+  width: 100%;
+  /* text-transform:; */
+}
