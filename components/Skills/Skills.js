@@ -4,7 +4,7 @@ const Skills = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="container">
+    <div className="container" >
       <h2 className="main-title">{t("skill")}</h2>
       <div className={styles.Slills}>
         <div>

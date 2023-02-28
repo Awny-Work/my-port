@@ -5,7 +5,7 @@ const Services = () => {
   const { t } = useTranslation();
 
   return (
-    <div className=" container Services">
+    <div className=" container Services" id={"services"}>
       <h2 className="main-title">{t("services.services")}</h2>
 
       {/* <p className="text-center">what i provide </p> */}

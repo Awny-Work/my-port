@@ -80,18 +80,17 @@ const NavBar = () => {
               <span className="icon-briefcase"></span>
               {t("nav.pro")}
             </Link>
-            <Link href={"/tools"}>
-              {/* <i className="pi pi-home"></i> */}
+            {/* <Link href={"/tools"}>
               <span className="icon-tools"></span>
               {t("nav.tools")}
-            </Link>
-            <Link href={"/skills"}>
+            </Link> */}
+            <Link href={"/#skills"}>
               {/* <i className="pi pi-home"></i> */}
               <span className="icon-lightbulb-o"></span>
               {t("nav.skill")}
             </Link>
 
-            <Link href={"/services"}>
+            <Link href={"/#services"}>
               <span className="icon-miscellaneous_services"></span>
               {/* <i className="pi pi-home"></i> */}
               {t("nav.services")}

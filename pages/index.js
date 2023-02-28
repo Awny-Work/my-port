@@ -111,14 +111,14 @@ export default function Home() {
             <WebApplication />
           </div>
         </DeferredContent>
-        <div style={{ minHeight: "300px" }} id={"Skills"}>
+        <div style={{ minHeight: "300px" }} id={"skills"}>
           <DeferredContent>
             <Skills />
           </DeferredContent>
         </div>
 
         <DeferredContent>
-          <div style={{ minHeight: "200px" }} id={"Skills"}>
+          <div style={{ minHeight: "200px" }}>
             <Study />
           </div>
         </DeferredContent>

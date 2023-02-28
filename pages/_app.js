@@ -12,6 +12,7 @@ import "@/styles/style.css";
 import Footer from "@/components/layout/Footer/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
+import SocialMedia from "@/components/layout/SocialMedia/SocialMedia";
 // import Lang from "@/components/layout/LangDiv/Lang";
 const NavBar = dynamic(() => import("@/components/layout/NavBar/NavBar"), {
   ssr: false,
@@ -20,7 +21,7 @@ const Lang = dynamic(() => import("@/components/layout/LangDiv/Lang"), {
   ssr: false,
 });
 
-function App({ Component, pageProps, canonical }) {
+function App({ Component, pageProps, canonical, Path }) {
   const [lang, setLang] = useState("");
   const { i18n } = useTranslation();
   useEffect(() => {
@@ -87,14 +88,14 @@ function App({ Component, pageProps, canonical }) {
         <meta name="twitter:site" content="@Abdelrahman2486" />
         <meta name="twitter:domain" content="Abdelrahman2486" />
         <meta name="twitter:creator" content="@Abdelrahman2486" />
-        <title>مجتمع عبدالرحمن طارق</title>
+        <title> عبدالرحمن طارق | Abdelrahman Tarek</title>
         <meta
           name="description"
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  "
         />
 
         {/* <!-- Google / Search Engine Tags --> */}
-        <meta itemProp="name" content="مجتمع عبدالرحمن طارق" />
+        <meta itemProp="name" content="عبدالرحمن طارق | Abdelrahman Tarek" />
         <meta
           itemProp="description"
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
@@ -107,7 +108,10 @@ function App({ Component, pageProps, canonical }) {
           property="og:url"
           content="https://awny-port-awny277.vercel.app"
         />
-        <meta property="og:title" content="مجتمع عبدالرحمن طارق" />
+        <meta
+          property="og:title"
+          content="عبدالرحمن طارق | Abdelrahman Tarek"
+        />
         <meta
           property="og:description"
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
@@ -117,7 +121,10 @@ function App({ Component, pageProps, canonical }) {
 
         {/* <!-- Twitter Meta Tags --/> */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="مجتمع عبدالرحمن طارق" />
+        <meta
+          name="twitter:title"
+          content="عبدالرحمن طارق | Abdelrahman Tarek"
+        />
         <meta
           name="twitter:description"
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
@@ -130,6 +137,7 @@ function App({ Component, pageProps, canonical }) {
         <NavBar />
         <Component {...pageProps} />
         <Footer />
+        <SocialMedia to={Path} />
       </Lang>
     </>
   );
@@ -143,6 +151,7 @@ App.getInitialProps = ({ ctx }) => {
   // console.log(canonical)
   return {
     canonical,
+    Path: asPath,
   };
 };
 

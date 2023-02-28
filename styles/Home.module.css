@@ -54,7 +54,8 @@
 
 .MyImage {
   position: relative;
-  /* width: 350px; */
+  width: 350px;
+  height: 350px;
   /* max-height: 500px; */
   /* min-height: 200px; */
   /* height: 350px; */
@@ -62,6 +63,12 @@
   margin: 0 auto 30px;
   animation: ImageAnimate 8s ease-in-out infinite 1s;
   -webkit-animation: ImageAnimate 8s ease-in-out infinite 1s;
+}
+@media (max-width: 767.98px) { 
+  .MyImage {
+    width: 200px;
+    height: 200px;
+  }
 }
 /* 991.98px */
 
@@ -86,7 +93,9 @@
  }
 
  /* .ImageTag {
-
+  position: relative;
+  width: 350px;
+  height: 350px;
 }  */
 @keyframes ImageAnimate {
   0%{
@@ -394,6 +403,9 @@
   color: var(--black);
 
   /* color : var(--text-color) */
+}
+.touch_info a {
+  color: var(--black);
 }
 .touch_info a:hover {
   color: var(--black);

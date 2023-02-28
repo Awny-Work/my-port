@@ -141,12 +141,12 @@ const Header = () => {
           >
             <Image
               className={styles.ImageTag}
-              src={"/images/awny.webp"}
+              src={"/images/awny4.jpg"}
               alt={"Abdelrahman Tarek Awny"}
-              layout={"responsive"}
-              width={350}
-              height={350}
-              // objectFit={"contain"}
+              layout={"fill"}
+              // width={350}
+              // height={350}
+              objectFit={"contain"}
               priority
             />
           </motion.div>
