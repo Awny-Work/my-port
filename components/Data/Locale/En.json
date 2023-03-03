@@ -53,8 +53,13 @@
     "Ui" :"UI/UX Designer",
     "web" :"Web Development",
     "mobile" :"Mobile App Development",
+    "responsive" :"Responsive Design",
+    "ResponsiveDe":"it's increasingly important for companies to have websites that render properly on smaller screens so that users don't encounter distorted images or experience a sub-optimal site layout.",
     "UiDe" : "By taking care of customer demands, you'll draw in more prospects who want to convert. The appropriate strategy will grab client interest and eventually result in profitable conversions with excellent UI/UX.",
-    "mobileDe" : " You can improve your marketing communication needs with a personalised mobile app. The software may be used to manage specific messaging, contacts, team information, and even engagement tools like competitions and campaigns. Your brand's colours, logos, and taglines can be applied to them.",
+    "mobileDe" : " You can improve your marketing communication needs with a personalised mobile app. The software may be used to manage specific messaging, contacts, team information, and even engagement tools like competitions and campaigns. ",
     "webDe" : "The first thing potential customers notice about your business is your website. It displays the character and professionalism of your business,  developing long-lasting client relationships, and making your organisation more accessible to wider audiences."
+  } , "certification" : {
+    "certification" :"certifications",
+    "view" :"Click To View"
   }
 }

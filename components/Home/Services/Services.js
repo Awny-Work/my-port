@@ -66,6 +66,15 @@ const Services = () => {
                 </div>
               </div>
             </div>
+            <div className="col-lg-6 servCol">
+              <div className="service">
+                <span class="icon-mobile"></span>
+                <div>
+                  <h3>{t("services.responsive")}</h3>
+                  <p>{t("services.ResponsiveDe")}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

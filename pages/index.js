@@ -13,6 +13,7 @@ import Study from "@/components/Home/Study/Study";
 // );
 import Header from "@/components/Home/Header/Header";
 import Services from "@/components/Home/Services/Services";
+import Certification from "@/components/Home/Certification/Certification";
 // const Header = dynamic(() => import("@/components/Home/Header/Header"), {
 //   ssr: false,
 //   // loading: () => "Header...",
@@ -128,6 +129,7 @@ export default function Home() {
             <Qualifications />
           </DeferredContent>
         </div>
+        <Certification />
 
         <DeferredContent>
           <div style={{ minHeight: "500px" }} id={"Qualifications"}>
