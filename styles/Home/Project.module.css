@@ -24,10 +24,10 @@
   height: 400px;
 }
 .train {
-  height: 205px;
+  min-height: 205px;
 }
 .landing {
-  min-height:205px;
+  height:205px;
 }
 @media (max-width: 991.98px) { 
   .landing .projectImage {

@@ -30,12 +30,13 @@ const nextConfig = {
     ],
     imageSizes: [32, 64, 96, 112, 128, 144, 160, 176, 192, 240],
     formats: ["image/webp"],
-    // domains: [
-    //   "souq.deltawy.com",
-    //   "apps.mohamed-ibrahiem.com",
-    //   "192.168.0.201",
-    //   "deltawy.com",
-    // ],
+    domains: [
+      "firebasestorage.googleapis.com",
+      // "souq.deltawy.com",
+      // "apps.mohamed-ibrahiem.com",
+      // "192.168.0.201",
+      // "deltawy.com",
+    ],
   },
 };
 

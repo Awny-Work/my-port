@@ -5,10 +5,11 @@ import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 // import "primeicons/primeicons.css";
 import dynamic from "next/dynamic";
-
+import { Provider } from "react-redux";
+import store from "store/store";
 // import NavBar from "@/components/layout/NavBar/NavBar";
-import "@/styles/globals.css";
 import "@/styles/style.css";
+import "@/styles/globals.css";
 import Footer from "@/components/layout/Footer/Footer";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -133,12 +134,14 @@ function App({ Component, pageProps, canonical, Path }) {
         <meta name="twitter:image" content="/ogImage.webp" />
         <meta property="og:updated_time" content="1440432930" />
       </Head>
-      <Lang>
-        <NavBar />
-        <Component {...pageProps} />
-        <Footer />
-        <SocialMedia to={Path} />
-      </Lang>
+      <Provider store={store}>
+        <Lang>
+          <NavBar />
+          <Component {...pageProps} />
+          <Footer />
+          <SocialMedia to={Path} />
+        </Lang>
+      </Provider>
     </>
   );
 }

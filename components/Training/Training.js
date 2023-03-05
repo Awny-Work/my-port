@@ -1,19 +1,67 @@
 // import Project from "../Projects/Project";
 import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
+import { db } from "@/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GetProjects } from "@/store/ProjectSlice";
 const Project = dynamic(() => import("../Projects/Project"), {
   ssr: false,
   loading: () => "Loading...",
 });
 const Training = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { Projects } = useSelector((state) => state.ProjectSlice);
+  const dbInstance = collection(db, "projects");
+  // const [DataState, setData] = useState([]);
+  const GetNotes = useCallback(() => {
+    getDocs(dbInstance).then((data) => {
+      dispatch(
+        GetProjects(
+          data.docs.map((item) => {
+            return { ...item.data(), id: item.id };
+          })
+        )
+      );
+    });
+  }, [dbInstance, dispatch]);
 
+  useEffect(() => {
+    if (Projects.length <= 0) {
+      GetNotes();
+    }
+  }, [Projects, GetNotes]);
   return (
     <div className="container">
       <h2 className="main-title"> {t("train")}</h2>
-
       <div className="row">
-        <Project
+        {Projects.length > 0 &&
+          [...Projects]
+            .filter((ele) => ele.type === "Training Projects")
+            .sort(
+              (a, b) =>
+                parseFloat(a.num).toFixed(0) - parseFloat(b.num).toFixed(0)
+            )
+            .map((ele) => {
+              return (
+                <Project
+                  key={ele.id}
+                  col={6}
+                  md={6}
+                  xl={4}
+                  src={ele.ImgURl}
+                  name={ele.name}
+                  type={"train"}
+                  fit={"cover"}
+                  link={ele.link}
+                  X={-50}
+                  Y={0}
+                />
+              );
+            })}
+        {/* <Project
           fit="cover"
           xl={4}
           md={6}
@@ -22,8 +70,8 @@ const Training = () => {
           name={"pharmacy arab"}
           type={"train"}
           link={"https://pharmacy-arab.vercel.app"}
-        />
-        <Project
+        /> */}
+        {/* <Project
           fit="cover"
           xl={4}
           md={6}
@@ -133,7 +181,7 @@ const Training = () => {
           name={"moon Landing"}
           type={"train"}
           link={"https://awny277.github.io/Moon"}
-        />
+        /> */}
       </div>
     </div>
   );
