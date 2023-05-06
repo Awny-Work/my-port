@@ -70,7 +70,7 @@ const AboutMe = () => {
             >
               <span className={`icon-check ${styles.icon}`}></span>
               <p>{t("about.comp")}</p>
-              <span className={styles.blus}>+5 {t("about.project")}</span>
+              <span className={styles.blus}>+8 {t("about.project")}</span>
             </motion.div>
             <motion.div
               className={styles.number}
@@ -93,7 +93,7 @@ const AboutMe = () => {
             >
               <span className={`icon-cc-visa ${styles.icon}`}></span>
               <p>{t("about.free")}</p>
-              <span className={styles.blus}>+3 {t("about.project")}</span>
+              <span className={styles.blus}>+5 {t("about.project")}</span>
             </motion.div>
           </div>
           <p className={styles.aboutP}>{t("about.Descrip")}</p>

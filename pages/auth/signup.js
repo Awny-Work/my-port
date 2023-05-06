@@ -2,74 +2,51 @@
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
-
-import { auth } from "@/firebase";
+import { auth, db, storage } from "@/firebase";
 import {
-  // onAuthStateChanged,
-  // createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  // signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
-// import { BsFillPersonFill } from "react-icons/bs";
-// import { RiLockPasswordFill } from "react-icons/ri";
 import { Toast } from "primereact/toast";
+import { collection, addDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import Cookies from "js-cookie";
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  // const logIn = (name, password) => {
-  //   return signInWithEmailAndPassword(auth, name, password);
-  // };
+  // const dbInstance = db.collection();
+
   const SendDate = (e) => {
     e.preventDefault();
     if (email.length === 0 || password.length === 0) {
       EMptyInput("برجاء ادخال جميع البيانات");
     } else {
-      signInWithEmailAndPassword(auth, email, password)
+      // signInWithEmailAndPassword(auth, name, password);
+      createUserWithEmailAndPassword(auth, email, password)
         .then((data) => {
-          console.log(data.user.uid);
+          // const dbInstance = collection(db, `useresTest`);
           Cookies.set("PortCom", true);
           Cookies.set("PortUIDToken", `${data.user.uid}`);
+          setDoc(doc(db, "Users", data.user.uid), {
+            name,
+            email,
+            password,
+            id: data.user.uid,
+          });
           router.push("/dashboard/completed-projects");
         })
         .catch((err) => {
+          // console.log(err.message);
+          // EMptyInput(err.message.slice("16"));
           EMptyInput(err.message);
         });
-      // createUserWithEmailAndPassword(auth, email, password);
       // if (email === "admin" && password === "Server2023Next") {
-      //   Cookies.set("awnyPortCom", true);
-      //   Cookies.set(
-      //     "awnyPortComToken",
-      //     "jkdasniuashyd7qwhduq-845q4weoq*/q-/skdkjasd"
-      //   );
-      //   router.push("/dashboard/completed-projects");
+      // router.push("/dashboard/completed-projects");
       // } else {
       //   EMptyInput("الاسم او كلمة السر غير صحيحه");
       // }
     }
-
-    // else {
-    //   const data = {
-    //     name,
-    //     password,
-    //   };
-    //   dispatch(getLogin(data))
-    //     .unwrap()
-    //     .then((originalPromiseResult) => {
-    //       if (originalPromiseResult.Result === false) {
-    //         showError();
-    //       } else {
-    //         dispatch(GetFromCart(originalPromiseResult.id));
-    //         dispatch(getjsonStrings(originalPromiseResult.id));
-    //         navigate(`/cp`);
-    //         showSuccess();
-    //       }
-    //     })
-    //     .catch((rejectedValueOrSerializedError) => {
-    //       console.log(rejectedValueOrSerializedError);
-    //     });
-    // }
   };
   const toast = useRef(null);
   const EMptyInput = (mess) => {
@@ -83,14 +60,27 @@ const Login = () => {
     <>
       <Toast ref={toast} />
       <div className="LoginPage">
-        <h1 className="text-center main-title">تسجيل الدخول</h1>
+        <h1 className="text-center main-title"> انشاء حساب جديد</h1>
         <Form>
           <div className="search-section input-div">
             <input
               type="text"
               name="name"
               id="name"
-              placeholder=" الاسم "
+              placeholder=" User Name "
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label htmlFor="name">
+              <span className="icon-contact_mail"></span>
+            </label>
+          </div>
+          <div className="search-section input-div">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder=" Email "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -103,7 +93,7 @@ const Login = () => {
               type="password"
               name="password"
               id="password"
-              placeholder="كلمة السر"
+              placeholder=" Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -128,4 +118,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

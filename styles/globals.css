@@ -489,18 +489,13 @@ a {
   width: 80%;
   margin: 5px;
   color: var(--black);
-
   background-color: transparent;
+  border: none;
+
 }
 
 .LoginNoti .input-div {
   width: 90%;
-}
-
-.search-section input {
-  border: none;
-  direction: rtl;
-  /* display: block; */
 }
 
 .search-section input:focus {
@@ -551,11 +546,66 @@ a {
 }
 
 ::placeholder {
-  color: black !important;
+  color: var(--black) !important;
   opacity: 1;
   /* Firefox */
 }
 
 .p-datatable .p-paginator-bottom {
   background-color: var(--nav-bg);
+}
+
+.MobileSlider {
+  position: relative;
+  width: 202px;
+  height: 400px;
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+.swiper-3d .swiper-slide-shadow {
+  background-color: transparent !important;
+}
+
+.swiper-3d {
+  perspective: 500px !important;
+}
+
+.TestApp {
+  position: relative;
+}
+
+.emptyApp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 202px;
+  /* max-width: 500px; */
+  height: 420px;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  /* background-color: white; */
+  background-image: url(../public/images/test1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 9;
+  overflow: hidden;
+}
+
+/* class="swiper-slide swiper-slide-visible swiper-slide-active" */
+.swiper-slide-active {
+  z-index: 99;
+}
+
+.swiper-slide-active .MobileSlider {
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
 }

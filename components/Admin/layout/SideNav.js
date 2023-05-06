@@ -49,13 +49,17 @@ const SideNav = () => {
           <CgProfile />
           الملف الشخصي
         </Link> */}
-        <Link
-          // style={navLinkStyles}
-          href={"/dashboard/completed-projects"}
-          // className={styles.edite_buuton}
-        >
+        <Link href={"/dashboard/user-info"}>
           <span className="icon-contact_mail"></span>
-          Completed Projects
+          User Info
+        </Link>
+        <Link href={"/dashboard/completed-projects"}>
+          <span className="icon-contact_mail"></span>
+          Projects
+        </Link>
+        <Link href={"/dashboard/skills"}>
+          <span className="icon-contact_mail"></span>
+          Skills
         </Link>
         {/* <Link
           // style={navLinkStyles}

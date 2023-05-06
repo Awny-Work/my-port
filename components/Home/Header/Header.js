@@ -162,7 +162,7 @@ const Header = () => {
       >
         <div className={styles.Mouse}></div>
         <span>{t("header.mouse")}</span>
-        <i className="pi pi-arrow-down"></i>
+        {/* <i className="pi pi-arrow-down"></i> */}
       </motion.div>
     </div>
   );

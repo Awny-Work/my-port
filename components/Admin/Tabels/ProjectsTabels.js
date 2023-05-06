@@ -7,16 +7,19 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useState, useCallback, useEffect } from "react";
 import { ref, deleteObject } from "firebase/storage";
 import { useDispatch, useSelector } from "react-redux";
-import { GetProjects } from "@/store/ProjectSlice";
-const ProjecTabels = () => {
+import { GetTeamProjects } from "@/store/ProjectSlice";
+import Cookies from "js-cookie";
+
+const ProjecTabels = ({ path }) => {
   const dispatch = useDispatch();
-  const { Projects } = useSelector((state) => state.ProjectSlice);
-  const dbInstance = collection(db, "projects");
+  const { TeamProjects } = useSelector((state) => state.ProjectSlice);
+  const uId = Cookies.get("PortUIDToken");
+  const dbInstance = collection(db, `Users/${uId}`, path);
   // const [DataState, setData] = useState([]);
   const GetNotes = useCallback(() => {
     getDocs(dbInstance).then((data) => {
       dispatch(
-        GetProjects(
+        GetTeamProjects(
           data.docs.map((item) => {
             return { ...item.data(), id: item.id };
           })
@@ -26,10 +29,10 @@ const ProjecTabels = () => {
   }, [dbInstance, dispatch]);
 
   useEffect(() => {
-    if (Projects.length <= 0) {
+    if (TeamProjects.length <= 0) {
       GetNotes();
     }
-  }, [Projects, GetNotes]);
+  }, [TeamProjects, GetNotes]);
 
   const [filters2, setFilters2] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -39,41 +42,19 @@ const ProjecTabels = () => {
     type: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
   const [selectedProduct1, setSelectedProduct1] = useState(null);
-  // const [globalFilterValue2, setGlobalFilterValue2] = useState("");
 
-  //   Global tabel Filter
-  // const onGlobalFilterChange2 = (e) => {
-  //   const value = e.target.value;
-  //   let _filters2 = { ...filters2 };
-  //   _filters2["global"].value = value;
-
-  //   setFilters2(_filters2);
-  //   setGlobalFilterValue2(value);
-  // };
-
-  //   Tabel Header
-  // const renderHeader2 = () => {
-  //   return (
-  //     <div className={`flex justify-content-end ${styles.tabel_header}`}>
-  //       <span className="p-input-icon-left">
-  //         <i className="pi pi-search" />
-  //         <InputText
-  //           value={globalFilterValue2}
-  //           onChange={onGlobalFilterChange2}
-  //           placeholder="البحث في اي مكان"
-  //         />
-  //       </span>
-  //     </div>
-  //   );
-  // };
-  // const header2 = renderHeader2();
   const DeleteFromStorage = async (ele) => {
-    const ImageRef = ref(storage, ele);
-    const ImageRef2 = ref(storage, `images/${ImageRef.name}`);
-    deleteObject(ImageRef2);
+    const allImages = [...ele];
+    allImages.map((img) => {
+      const ImageRef = ref(storage, img);
+      const ImageRef2 = ref(storage, `images/${ImageRef.name}`);
+      deleteObject(ImageRef2);
+    });
   };
+
   const deleteNote = (eleID) => {
-    const collectionById = doc(db, "projects", eleID);
+    console.log(eleID);
+    const collectionById = doc(db, `Users/${uId}/${path}`, eleID);
     deleteDoc(collectionById).then(() => {
       GetNotes();
     });
@@ -86,7 +67,7 @@ const ProjecTabels = () => {
           className={`${styles.TabelButton} ${styles.Cancel}`}
           onClick={() => {
             deleteNote(rowData.id);
-            DeleteFromStorage(rowData.ImgURl);
+            // DeleteFromStorage(rowData.ImgURl);
           }}
         >
           <span className="icon-close"></span>
@@ -117,7 +98,7 @@ const ProjecTabels = () => {
           //   setUpdateImage2(e.value.disabledIcon);
           //   // const [updateImage2, setUpdateImage2] = useState("");
           // }}
-          value={Projects}
+          value={TeamProjects}
           paginator
           // className="p-datatable-customers"
           className={`${styles.dataTabel}`}
@@ -128,7 +109,7 @@ const ProjecTabels = () => {
           responsiveLayout="scroll"
           globalFilterFields={["name", "Id", "mobile", "email"]}
           // header={header2}
-          emptyMessage="  لا يوجد عملاء بهذه البيانات"
+          emptyMessage="  لا يوجد بيانات الان "
         >
           <Column
             filterField="id"

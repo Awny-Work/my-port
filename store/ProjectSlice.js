@@ -28,11 +28,16 @@ const ProjectSlice = createSlice({
     isLoading: false,
     error: null,
     Projects: [],
+    TeamProjects: [],
   },
   reducers: {
     GetProjects: (state, action) => {
       // console.log(action.payload);
       state.Projects = action.payload;
+    },
+    GetTeamProjects: (state, action) => {
+      // console.log(action.payload);
+      state.TeamProjects = action.payload;
     },
   },
   // extraReducers: {
@@ -43,6 +48,6 @@ const ProjectSlice = createSlice({
   //   },
   // },
 });
-export const { GetProjects } = ProjectSlice.actions;
+export const { GetProjects, GetTeamProjects } = ProjectSlice.actions;
 
 export default ProjectSlice.reducer;

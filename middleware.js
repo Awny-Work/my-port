@@ -1,15 +1,10 @@
 const { NextResponse } = require("next/server");
 
 export default function middleware(req) {
-  const verify = req.cookies.get("awnyPortCom");
-  const verifytoken = req.cookies.get("awnyPortComToken");
+  const verify = req.cookies.get("PortCom");
+  const verifytoken = req.cookies.get("PortUIDToken");
   let url = req.url;
-  if (
-    !verify &&
-    url.includes("/dashboard") &&
-    !verifytoken &&
-    verifytoken !== "jkdasniuashyd7qwhduq-845q4weoq*/q-/skdkjasd"
-  ) {
+  if (!verify && url.includes("/dashboard") && !verifytoken) {
     // return NextResponse.redirect(
     //   "https://awny-community.netlify.app/auth/login"
     // );
