@@ -1,162 +1,120 @@
-import Head from "next/head";
-import "@/components/Data/i18n";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
-import "primereact/resources/primereact.min.css"; //core css
-import "primeicons/primeicons.css";
-import "swiper/css";
-// import "primeicons/primeicons.css";
-import dynamic from "next/dynamic";
-import { Provider } from "react-redux";
-import store from "store/store";
-// import NavBar from "@/components/layout/NavBar/NavBar";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import { useTranslation } from "react-i18next";
+import "@/styles/fonts/stylesheet.css";
 import "@/styles/style.css";
 import "@/styles/globals.css";
-import Footer from "@/components/layout/Footer/Footer";
-import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
-import SocialMedia from "@/components/layout/SocialMedia/SocialMedia";
-// import Lang from "@/components/layout/LangDiv/Lang";
-const NavBar = dynamic(() => import("@/components/layout/NavBar/NavBar"), {
+import Cookies from "js-cookie";
+import dynamic from "next/dynamic";
+import Router from "next/router";
+const Navbar = dynamic(() => import("@/components/layout/Navbar/Navbar"), {
+  loading: () => <p></p>,
   ssr: false,
 });
-const Lang = dynamic(() => import("@/components/layout/LangDiv/Lang"), {
+const Footer = dynamic(() => import("@/components/layout/footer/Footer"), {
+  loading: () => <p></p>,
   ssr: false,
 });
+import { Provider } from "react-redux";
+import { useState, useEffect } from "react";
+import store from "@/store/store";
+import Head from "next/head";
+// import LoadingScreen from "@/components/Home/LoadingScreen/LoadingScreen";
+import LoadingWrap from "@/components/layout/LoadingWrap/LoadingWrap";
+import "@/components/Data/i18n";
+import Loading from "@/components/layout/Loading/Loading";
 
-function App({ Component, pageProps, canonical, Path }) {
-  const [lang, setLang] = useState("");
+function App({ Component, pageProps, canonical }) {
+  const [bodyHeight, setBodyHeight] = useState(false);
   const { i18n } = useTranslation();
   useEffect(() => {
-    // window.localStorage.setItem("lan", "en");
-
-    const lan = window.localStorage.getItem("lan");
-    if (!lan) {
-      window.localStorage.setItem("lan", "en");
-      i18n.changeLanguage("en");
-      setLang("en");
-    } else {
-      // window.localStorage.setItem("lan", "en");
-
-      i18n.changeLanguage(lan);
-      setLang(lan);
+    if (!Cookies.get("MIgdir")) {
+      Cookies.set("MIgdir", "true");
+      i18n.changeLanguage("Ar");
     }
-  }, [i18n, lang.length]);
+    if (!Cookies.get("MIgLanSymbol")) {
+      Cookies.set("MIgLanSymbol", "Ar");
+      i18n.changeLanguage("Ar");
+    } else {
+      i18n.changeLanguage(Cookies.get("MIgLanSymbol"));
+    }
+  }, [i18n]);
 
-  // const changEN = () => {
-  //   i18n.changeLanguage("ar");
-  // };
-
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
+    const end = () => {
+      setLoading(false);
+    };
+    Router.events.on("routeChangeStart", start);
+    Router.events.on("routeChangeComplete", end);
+    Router.events.on("routeChangeError", end);
+    return () => {
+      Router.events.off("routeChangeStart", start);
+      Router.events.off("routeChangeComplete", end);
+      Router.events.off("routeChangeError", end);
+    };
+  }, []);
   return (
     <>
       <Head>
-        <meta
-          name="description"
-          content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  "
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="geo.placename" content="Egypt" />
-        <meta
-          name="geo.position"
-          content="30.964816662156675, 31.16239846536351"
-        />
+        <title>CDC</title>
+
+        {/* <meta name="geo.placename" content="Egypt" />
+        <meta name="geo.position" content="30.9685798;31.1664157" />
         <meta name="geo.region" content="egypt" />
-        <meta name="ICBM" content="30.964816662156675, 31.16239846536351" />
-        <meta name="author" content=" Abdelrahman Tarek Awny" />
+        <meta name="ICBM" content="30.9685798, 31.1664157" />
+        <meta name="author" content="MIG" /> */}
         {/* <meta name="robots" content="index,follow" /> */}
-        <meta
-          name="keywords"
-          content=" Qualifications, Company , Upwork , Skills , Abdelrahman , Mahalla , Kubra ,Egypt  مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  "
-        />
-
+        <meta name="keywords" content="CDC" />
+        <meta name="description" content="CDC Description" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        {/* <link
-          href="https://plus.google.com/107145100779631826770"
-          rel="publisher"
-        /> */}
-
-        <meta property="og:locale" content="ar_AR" />
+        <meta property="og:title" content="CDC" />
+        <meta property="og:image" content="/images/CDC.png" />
         <meta property="og:type" content="website" />
-
-        <meta
-          property="og:site_name"
-          content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  "
-        />
+        <meta property="og:description" content=" CDC Description" />
+        <meta property="og:site_name" content="CDC " />
         <meta property="og:url" rel="canonical" content={canonical} />
         <link rel="canonical" href={canonical} />
-        {/* <link rel="canonical" href={"https://awny-port-awny277.vercel.app"} /> */}
-
-        {/* <meta property="fb:app_id" content="156283204469041" /> */}
-        <meta name="twitter:site" content="@Abdelrahman2486" />
-        <meta name="twitter:domain" content="Abdelrahman2486" />
-        <meta name="twitter:creator" content="@Abdelrahman2486" />
-        <title> عبدالرحمن طارق | Abdelrahman Tarek</title>
-        <meta
-          name="description"
-          content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  "
-        />
-
-        {/* <!-- Google / Search Engine Tags --> */}
-        <meta itemProp="name" content="عبدالرحمن طارق | Abdelrahman Tarek" />
-        <meta
-          itemProp="description"
-          content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
-"
-        />
-        <meta itemProp="image" content="/ogImage.png" />
-
-        {/* <!-- Facebook Meta Tags --/> */}
-        <meta
-          property="og:url"
-          content="https://awny-port-awny277.vercel.app"
-        />
-        <meta
-          property="og:title"
-          content="عبدالرحمن طارق | Abdelrahman Tarek"
-        />
-        <meta
-          property="og:description"
-          content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
-"
-        />
-        <meta property="og:image" itemProp="image" content="/ogImage.png" />
-
-        {/* <!-- Twitter Meta Tags --/> */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="عبدالرحمن طارق | Abdelrahman Tarek"
-        />
-        <meta
-          name="twitter:description"
-          content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
-"
-        />
-        <meta name="twitter:image" content="/ogImage.png" />
-        <meta property="og:updated_time" content="1440432930" />
       </Head>
-      <Provider store={store}>
-        <Lang>
-          <NavBar />
-          <Component {...pageProps} />
-          <Footer />
-          <SocialMedia to={Path} />
-        </Lang>
-      </Provider>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <Provider store={store}>
+            <LoadingWrap>
+              <div
+                style={{ maxHeight: "25vh", minHeight: "140px" }}
+                className="TopNav"
+              >
+                <Navbar
+                  state={bodyHeight}
+                  overHeight={(e) => setBodyHeight(e)}
+                />
+              </div>
+              <div className=" margin_mobile">
+                <Component {...pageProps} />
+              </div>
+              <Footer />
+            </LoadingWrap>
+          </Provider>
+        </div>
+      )}
     </>
   );
 }
 
 App.getInitialProps = ({ ctx }) => {
   // const isProd = process.env.NODE_ENV === "production";
-  const base = "https://awny-community.netlify.app";
+  const base = "https://icdc-temp.com";
   const { asPath } = ctx;
   const canonical = base + asPath;
   // console.log(canonical)
   return {
     canonical,
-    Path: asPath,
   };
 };
 

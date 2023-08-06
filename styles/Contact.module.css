@@ -1,0 +1,101 @@
+.contact_Input {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: var(--marginSection);
+  margin-top: var(--marginLine);
+  /* justify-content: ; */
+}
+
+.contact_Input:first-of-type {
+  margin-top: 20px;
+}
+
+.contact_Input label {
+  font-weight: 500;
+  font-size: var(--tinyFont);
+}
+
+.contact_Input input,
+.contact_Input textarea {
+  /* padding: 10px 0; */
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.contact_Input input:focus,
+.contact_Input textarea:focus {
+  /* border: none; */
+  box-shadow: none;
+  outline: none;
+  /* out/ */
+}
+
+.contact_Input button {
+  color: var(--white);
+  background-color: var(--main-color-2);
+  padding: 16px;
+  font-weight: 500;
+  font-size: var(--lastMediumFont);
+  border: none;
+}
+
+.MapLocation {
+  position: relative;
+}
+.MapLocation iframe {
+  width: 100%;
+  height: 400px;
+}
+
+.loc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  /* box-shadow: 0px 1px 3px 1px #f7f7f7; */
+}
+
+.loc p {
+  margin: 0 10px;
+}
+
+.loc svg {
+  color: var(--main-color-2);
+  font-size: 18px;
+}
+
+@media (max-width: 991.98px) {
+  .contact_Input {
+    width: 100%;
+  }
+}
+.info {
+  /* text-align: left; */
+  direction: ltr;
+  margin-bottom: 15px;
+}
+
+.social {
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: justify;
+}
+
+.social svg {
+  margin-right: 10px;
+  color: var(--main-color);
+}
+
+.social span {
+  /* direction: ltr; */
+  display: inline-block;
+}

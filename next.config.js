@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    customKey:
+      //  "https://news.etihaad-eg.com/api",
+      "https://api.icdc-temp.com",
+    webDomain: "https://icdc-temp.com",
+    // "http://localhost:3000",
+  },
   reactStrictMode: false,
   swcMinify: true,
   images: {
@@ -31,11 +38,11 @@ const nextConfig = {
     imageSizes: [32, 64, 96, 112, 128, 144, 160, 176, 192, 240],
     formats: ["image/webp"],
     domains: [
-      "firebasestorage.googleapis.com",
-      // "souq.deltawy.com",
-      // "apps.mohamed-ibrahiem.com",
-      // "192.168.0.201",
-      // "deltawy.com",
+      "news.etihaad-eg.com",
+      "mig-alb-api-1583704581.eu-central-1.elb.amazonaws.com",
+      "api.migeneva-temp.com",
+      "api.icdc-temp.com",
+      "ec2-52-57-24-186.eu-central-1.compute.amazonaws.com",
     ],
   },
 };

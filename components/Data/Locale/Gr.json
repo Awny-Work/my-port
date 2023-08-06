@@ -1,0 +1,30 @@
+{
+  "menu" :{
+    "search":"Suchen",
+    "about" : {
+      "about":"Um",
+      "about_mig" : "Um MIG",
+      "contact":"Kontaktiere uns"
+    },
+    "subscribe" :{
+      "subscribe" :"Abonniere unseren Newsletter",
+      "subscribe_Btn" : "Abonnieren",
+      "email":"Email eingeben..." ,
+      "name" :"Vollständiger Name"
+    },
+    "most_visited":"Meist besuchte",
+    "follow_us" :"Folgen Sie uns",
+    "whaths_app" :"Artikel erhalten",
+    "tags" :"Stichworte",
+    "resources" :"Ressourcen",
+    "home" :"Heim",
+    "not_fund" :" No Articles Found" ,
+    "show_more" :"Show More",
+    "mobile" :"Mobile",
+    "name" :"Full Name",
+    "email" :"Email",
+    "message" :"Message",
+    "submit" :"Submit",
+    "contact_number" :"Adressen und Kontaktnummern"
+  }
+}

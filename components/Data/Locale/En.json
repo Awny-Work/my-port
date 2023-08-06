@@ -1,66 +1,30 @@
 {
-  "nav" :{
-    "home":"Home",
-    "pro" :"Projects",
-    "tools" : "Tools",
-    "skill" : "Skills",
-    "contact" : "Contact",
-    "services" : "Services",
-    "lang" : "Language"
-  },
-  "header" : {
-    "name" :"Abdelrahman Tarek Awny",
-    "job" :"Frontend Developer",
-    "cover" :" I work on serious, quick websites that come up as the first result on Google searches, and I hold a bachelor's degree in computer science.",
-    "whats" : "Say Hello",
-    "mouse" : "Scroll Down"
-  },
-  "about":{
-    "about":"About Me",
-    "exp" :"Experience",
-    "comp" :"Completed",
-    "train" : "Training",
-    "free" :"Freelance",
-    "dashboard":"Dashboard",
-    "Descrip" :"Hello, my dear friends. I'm Abdelrahman Tarek Awny. For the past two years, I have used React.js and Next.js in my front-end development work. I work on serious, quick websites that come up as the first result on Google searches, and I hold a bachelor's degree in computer science.",
-    "viewCv" :"View Cv",
-    "project" :"Projects",
-    "year" :"Year"
-  },
-  "live" :"Live Projects",
-  "train" :"Training Projects",
-  "land" :"Landing Pages" ,
-  "webApp" :"Web Application",
-  "skill" :"Skills",
-  "study" :"My Study Plan",
-  "qulif" : {
-    "qulif" :"Qualifications",
-    "exp" :"Experience",
-    "Edu" :"Education",
-    "course" :"Courses"
-  },
-  "contact" :{
-    "contact" :"Contact Me",
-    "email" : "Email",
-    "messanger" :"Messenger",
-    "whats" :"Whatsapp",
-    "name" :"Name",
-    "proName" : "Project Name",
-    "descr" : "Description",
-    "sendMess" :"Send Message"
-  },
-  "services" : {
-    "services" : "Services",
-    "Ui" :"UI/UX Designer",
-    "web" :"Web Development",
-    "mobile" :"Mobile App Development",
-    "responsive" :"Responsive Design",
-    "ResponsiveDe":"it's increasingly important for companies to have websites that render properly on smaller screens so that users don't encounter distorted images or experience a sub-optimal site layout.",
-    "UiDe" : "By taking care of customer demands, you'll draw in more prospects who want to convert. The appropriate strategy will grab client interest and eventually result in profitable conversions with excellent UI/UX.",
-    "mobileDe" : " You can improve your marketing communication needs with a personalised mobile app. The software may be used to manage specific messaging, contacts, team information, and even engagement tools like competitions and campaigns. ",
-    "webDe" : "The first thing potential customers notice about your business is your website. It displays the character and professionalism of your business,  developing long-lasting client relationships, and making your organisation more accessible to wider audiences."
-  } , "certification" : {
-    "certification" :"certifications",
-    "view" :"Click To View"
+  "menu" :{
+    "search":"Search",
+    "about" : {
+      "about":"About",
+      "about_mig" : "About MIG",
+      "contact":"Contact Us"
+    },
+    "subscribe" :{
+      "subscribe" :"Subscribe To Our Newsletter",
+      "subscribe_Btn" : "Subscribe",
+      "email":"Enter Email..." ,
+      "name" :"Enter Full Name"
+    },
+    "most_visited":"Most Visited",
+    "follow_us" :"Follow Us",
+    "whaths_app" :"Receive Articles",
+    "tags" :"Tags",
+    "resources" :"Resources",
+    "home" :"Home",
+    "not_fund" :" No Articles Found",
+    "show_more" :"Show More",
+    "mobile" :"Mobile",
+    "name" :"Full Name",
+    "email" :"Email",
+    "message" :"Message",
+    "submit" :"Submit",
+    "contact_number" :"Addresses and contact numbers"
   }
 }
