@@ -104,7 +104,7 @@ function App({ Component, pageProps, canonical, Path }) {
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
 "
         />
-        <meta itemProp="image" content="/ogImage.webp" />
+        <meta itemProp="image" content="/ogImage.png" />
 
         {/* <!-- Facebook Meta Tags --/> */}
         <meta
@@ -120,7 +120,7 @@ function App({ Component, pageProps, canonical, Path }) {
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
 "
         />
-        <meta property="og:image" itemProp="image" content="/ogImage.webp" />
+        <meta property="og:image" itemProp="image" content="/ogImage.png" />
 
         {/* <!-- Twitter Meta Tags --/> */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -133,7 +133,7 @@ function App({ Component, pageProps, canonical, Path }) {
           content="   مجتمع عبدالرحمن طارق لتصميم و تطوير المواقع و مساعدة الشركات في تنفيذ متطلباتهم  
 "
         />
-        <meta name="twitter:image" content="/ogImage.webp" />
+        <meta name="twitter:image" content="/ogImage.png" />
         <meta property="og:updated_time" content="1440432930" />
       </Head>
       <Provider store={store}>

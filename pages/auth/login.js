@@ -28,7 +28,7 @@ const Login = () => {
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((data) => {
-          console.log(data.user.uid);
+          // console.log(data.user.uid);
           Cookies.set("PortCom", true);
           Cookies.set("PortUIDToken", `${data.user.uid}`);
           router.push("/dashboard/completed-projects");

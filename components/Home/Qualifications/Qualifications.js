@@ -86,13 +86,29 @@ const Qualifications = () => {
               </div>
               <div>
                 <h3 className={styles.title}>Upwork</h3>
-                <span className={styles.subTitle}>freelancer</span>
+                <span className={styles.subTitle}>Freelancer</span>
                 <div className={styles.calender}>
                   <span
                     className={`icon-calendar-check-o ${styles.iconquli}`}
                   ></span>
-                  2022-present
+                  2022-2023
                 </div>
+              </div>
+            </div>
+            <div className={styles.Qualif_Data}>
+              <div>
+                <h3 className={styles.title}>Meta Misr Technologies</h3>
+                <span className={styles.subTitle}>Dumyata - Egypt</span>
+                <div className={styles.calender}>
+                  <span
+                    className={`icon-calendar-check-o ${styles.iconquli}`}
+                  ></span>
+                  2023-2023
+                </div>
+              </div>
+              <div className={styles.round}>
+                <span className={styles.rounder}></span>
+                <span className={styles.line}></span>
               </div>
             </div>
           </div>

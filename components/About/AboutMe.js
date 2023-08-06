@@ -3,6 +3,7 @@ import styles from "@/styles/About.module.css";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { BiSolidDashboard } from "react-icons/bi";
 const AboutMe = () => {
   const { t } = useTranslation();
 
@@ -91,9 +92,12 @@ const AboutMe = () => {
               transition={{ type: "spring", stiffness: 200 }}
               viewport={{ once: true }}
             >
-              <span className={`icon-cc-visa ${styles.icon}`}></span>
-              <p>{t("about.free")}</p>
-              <span className={styles.blus}>+5 {t("about.project")}</span>
+              {/* <span className={`icon-cc-visa ${styles.icon}`}></span> */}
+              <span className={styles.icon}>
+                <BiSolidDashboard />
+              </span>
+              <p>{t("about.dashboard")}</p>
+              <span className={styles.blus}>+12 {t("about.project")}</span>
             </motion.div>
           </div>
           <p className={styles.aboutP}>{t("about.Descrip")}</p>
@@ -113,7 +117,7 @@ const AboutMe = () => {
             </Link>
 
             <a
-              href="https://drive.google.com/file/d/1ArCojQ023COFF569cSqC5NIxsI6Q2ayJ/view?usp=sharing"
+              href="https://drive.google.com/file/d/1fHRV6RBzaaXRXD-kPgxvL3YC3EawL6fo/view?usp=drive_link"
               className={`say`}
               target="_blank"
               rel="noopener noreferrer"

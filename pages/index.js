@@ -31,38 +31,38 @@ const MainProjects = dynamic(
 );
 const AboutMe = dynamic(() => import("@/components/About/AboutMe"), {
   ssr: false,
-  loading: () => "AboutMe...",
+  loading: () => <></>,
 });
 const Skills = dynamic(() => import("@/components/Skills/Skills"), {
   ssr: false,
 
-  loading: () => "Skills...",
+  loading: () => <></>,
 });
 const WebApplication = dynamic(
   () => import("@/components/Home/WebApplication/WebApplication"),
   {
     ssr: false,
-    loading: () => "WebApplication...",
+    loading: () => <></>,
   }
 );
 const Qualifications = dynamic(
   () => import("@/components/Home/Qualifications/Qualifications"),
   {
     ssr: false,
-    loading: () => "Qualifications...",
+    loading: () => <></>,
   }
 );
 const ContactSection = dynamic(
   () => import("@/components/ContactSection/ContactSection"),
   {
     ssr: false,
-    loading: () => "ContactSection...",
+    loading: () => <></>,
   }
 );
 
 const Landing = dynamic(() => import("@/components/Home/Landing/Landing"), {
   ssr: false,
-  loading: () => "Landing...",
+  loading: () => <></>,
 });
 // const Footer = dynamic(
 //   () => import("@/components/layout/Footer/Footer"),

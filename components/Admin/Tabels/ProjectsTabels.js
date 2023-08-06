@@ -14,7 +14,8 @@ const ProjecTabels = ({ path }) => {
   const dispatch = useDispatch();
   const { TeamProjects } = useSelector((state) => state.ProjectSlice);
   const uId = Cookies.get("PortUIDToken");
-  const dbInstance = collection(db, `Users/${uId}`, path);
+  const dbInstance = collection(db, `projects`);
+  // const dbInstance = collection(db, `Users/${uId}`, path);
   // const [DataState, setData] = useState([]);
   const GetNotes = useCallback(() => {
     getDocs(dbInstance).then((data) => {
@@ -79,28 +80,13 @@ const ProjecTabels = ({ path }) => {
   return (
     <>
       <div className={styles.Tabel}>
-        {/* <div className="card"> */}
         <DataTable
-          // head
-          // header={header}
           scrollable
           scrollHeight="100vh"
           selectionMode="single"
           selection={selectedProduct1}
-          // onSelectionChange={(e) => {
-          //   setSelectedCats(e.value);
-          //   setSelectedProduct1(e.value);
-          //   setNameUpdate(e.value.name);
-          //   setOrderUpdate(e.value.ord);
-          //   setparentIDUpdate(e.value.parentId);
-          //   setID(e.value.id);
-          //   setUpdateImage1(e.value.activeIcon);
-          //   setUpdateImage2(e.value.disabledIcon);
-          //   // const [updateImage2, setUpdateImage2] = useState("");
-          // }}
           value={TeamProjects}
           paginator
-          // className="p-datatable-customers"
           className={`${styles.dataTabel}`}
           rows={10}
           dataKey="id"
@@ -108,7 +94,6 @@ const ProjecTabels = ({ path }) => {
           filterDisplay="row"
           responsiveLayout="scroll"
           globalFilterFields={["name", "Id", "mobile", "email"]}
-          // header={header2}
           emptyMessage="  لا يوجد بيانات الان "
         >
           <Column

@@ -14,15 +14,15 @@ const AddProjects = () => {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [num, setNum] = useState("");
-  const [imagePath, setImagePath] = useState("");
+  const [imagePath, setImagePath] = useState(null);
   const [Project_Type, setProjectType] = useState(null);
   const [progresspercent, setProgresspercent] = useState(0);
 
   // const [images, setImages] = useState([]);
   const [urls, setUrls] = useState([]);
-
   const uId = Cookies.get("PortUIDToken");
-  const dbInstance = collection(db, `Users/${uId}`, "Projects");
+  const dbInstance = collection(db, `projects`);
+  // const dbInstance = collection(db, `Users/${uId}`, "Projects");
   const dispatch = useDispatch();
   const GetNotes = () => {
     getDocs(dbInstance).then((data) => {
@@ -35,62 +35,71 @@ const AddProjects = () => {
       );
     });
   };
-  // const project_Select_Type = [
-  //   { name: "Live Projects" },
-  //   { name: "Training Projects" },
-  //   { name: "Landing Pages " },
-  //   { name: "Web Application" },
-  //   { name: "Certification" },
-  // ];
   const project_Select_Type = [
-    { name: "Completed Projects" },
+    { name: "Live Projects" },
     { name: "Training Projects" },
+    { name: "Landing Pages " },
+    { name: "Web Application" },
+    { name: "Certification" },
   ];
-  // const UploadImage = () => {
-  //   // console.log(Project_Type);
-  //   if (
-  //     imagePath.length === 0 ||
-  //     num.length === 0 ||
-  //     link.length === 0 ||
-  //     name.length === 0 ||
-  //     Project_Type === null
-  //   ) {
-  //     EMptyInput("برجاء اختيار الصورة");
-  //   } else {
-  //     const ImageRef = ref(storage, `images/${imagePath.name}`);
-  //     const uploadTask = uploadBytesResumable(ImageRef, imagePath);
-  //     uploadTask.on(
-  //       "state_changed",
-  //       (snapshot) => {
-  //         const progress = Math.round(
-  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-  //         );
-  //         setProgresspercent(progress);
-  //       },
-  //       (error) => {
-  //         alert(error);
-  //       },
-  //       () => {
-  //         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-  //           addDoc(dbInstance, {
-  //             ImgURl: { downloadURL },
-  //             name,
-  //             link,
-  //             num,
-  //             type: Project_Type.name,
-  //           }).then(() => {
-  //             GetNotes();
-  //             setImagePath("");
-  //             setName("");
-  //             setNum("");
-  //             setLink("");
-  //             setProjectType(null);
-  //           });
-  //         });
-  //       }
-  //     );
-  //   }
-  // };
+  // const project_Select_Type = [
+  //   { name: "Completed Projects" },
+  //   { name: "Training Projects" },
+  // ];
+  const UploadImage = () => {
+    // console.log(Project_Type);
+    if (
+      !imagePath ||
+      num.length === 0 ||
+      link.length === 0 ||
+      name.length === 0 ||
+      !Project_Type
+    ) {
+      // console.log(imagePath);
+      // console.log(num);
+      // console.log(link);
+      // console.log(name);
+      // console.log(Project_Type);
+      EMptyInput("Error Data Empty");
+    } else {
+      // console.log(imagePath);
+
+      const ImageRef = ref(storage, `images/${imagePath.name}`);
+      const uploadTask = uploadBytesResumable(ImageRef, imagePath);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgresspercent(progress);
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            addDoc(dbInstance, {
+              ImgURl: downloadURL,
+              name,
+              link,
+              num,
+              type: Project_Type.name,
+            }).then(() => {
+              GetNotes();
+              setImagePath(null);
+              setName("");
+              setNum("");
+              setLink("");
+              setProjectType(null);
+            });
+          });
+        }
+      );
+    }
+  };
+
+  // Multi Images
 
   const handleUpload = async (file) => {
     // const promises = [];
@@ -111,7 +120,7 @@ const AddProjects = () => {
         },
         async () => {
           await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log(downloadURL);
+            // console.log(downloadURL);
             const res = downloadURL;
             setUrls((current) => [...current, res]);
             // promises.push(uploadTask);
@@ -120,33 +129,33 @@ const AddProjects = () => {
       );
     });
   };
-  const SendData = (e) => {
-    if (
-      num.length === 0 ||
-      link.length === 0 ||
-      name.length === 0 ||
-      Project_Type === null ||
-      urls.length <= 0
-    ) {
-      EMptyInput("برجاء اختيار الصور و ادخال جميع البيانات");
-    } else {
-      addDoc(dbInstance, {
-        ImgURl: urls,
-        name,
-        link,
-        num,
-        type: Project_Type.name,
-      }).then(() => {
-        // GetNotes();
-        setUrls([]);
-        setName("");
-        setNum("");
-        setLink("");
-        setProjectType(null);
-        GetNotes();
-      });
-    }
-  };
+  // const SendData = (e) => {
+  //   if (
+  //     num.length === 0 ||
+  //     link.length === 0 ||
+  //     name.length === 0 ||
+  //     Project_Type === null ||
+  //     urls.length <= 0
+  //   ) {
+  //     EMptyInput("برجاء اختيار الصور و ادخال جميع البيانات");
+  //   } else {
+  //     addDoc(dbInstance, {
+  //       ImgURl: urls,
+  //       name,
+  //       link,
+  //       num,
+  //       type: Project_Type.name,
+  //     }).then(() => {
+  //       // GetNotes();
+  //       setUrls([]);
+  //       setName("");
+  //       setNum("");
+  //       setLink("");
+  //       setProjectType(null);
+  //       GetNotes();
+  //     });
+  //   }
+  // };
 
   const toast = useRef(null);
   const EMptyInput = (ele) => {
@@ -163,20 +172,22 @@ const AddProjects = () => {
         <input
           type="file"
           style={{ display: "none" }}
-          id="storeImage"
-          name="storeImage"
+          id="Up_Image"
+          name="Up_Image"
           accept="image/*"
           multiple={true}
           onChange={(e) => {
-            handleUpload(e.target.files);
+            // handleUpload(e.target.files);
+            setImagePath(e.target.files[0]);
+            // console.log(e.target.files[0])
           }}
         />
-        <label htmlFor="storeImage">
+        <label htmlFor="Up_Image">
           {" "}
           <span className="icon-contact_mail"></span>
         </label>
-        <label htmlFor="storeImage"> اضغط لأختيار الصورة </label>
-        <label htmlFor="storeImage">Browse files</label>
+        <label htmlFor="Up_Image"> اضغط لأختيار الصورة </label>
+        <label htmlFor="Up_Image">Browse files</label>
       </div>
       {parseInt(progresspercent) > 0 && (
         <progress value={progresspercent} max={"100"} />
@@ -233,7 +244,7 @@ const AddProjects = () => {
           </span>
         </div>
         <div className="col-md-12">
-          <button onClick={SendData} className={styles.upoladImagesBtn}>
+          <button onClick={UploadImage} className={styles.upoladImagesBtn}>
             Save
           </button>
         </div>
