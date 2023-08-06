@@ -3,8 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: http://mig-loadbalancer-1009989516.eu-central-1.elb.amazonaws.com
+Host: https://awny-community.netlify.app/
 
 # Sitemaps
-Sitemap: http://mig-loadbalancer-1009989516.eu-central-1.elb.amazonaws.com/sitemap.xml
-Sitemap: http://mig-loadbalancer-1009989516.eu-central-1.elb.amazonaws.com/articels.index.xml
+Sitemap: https://awny-community.netlify.app/sitemap.xml

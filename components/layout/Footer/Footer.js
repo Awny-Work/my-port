@@ -1,73 +1,69 @@
-import styles from "@/styles/Home.module.css";
-
-import Cookies from "js-cookie";
-import Image from "next/legacy/image";
-import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import styles from "@/styles/Footer.module.css";
+import Image from "next/image";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import Subscribe from "@/components/Home/Subscribe/Subscribe";
+import dynamic from "next/dynamic";
+
+const Logo = dynamic(() => import("../Logo/Logo"), {
+  ssr: false,
+  // loading: () => "Header...",
+});
 const Footer = () => {
-  // const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const router = useRouter();
-  const { SocialArr, FooterAbout } = useSelector((state) => state.HomeSlice);
-
   return (
-    <div
-      className={styles.Footer}
-      style={{
-        textAlign: Cookies.get("MIgdir") === "true" ? "right" : "left",
-        direction: Cookies.get("MIgdir") === "true" ? "rtl" : "ltr",
-      }}
-    >
-      <div className="container-xxl">
-        <div className="row justify-content-between">
-          <div className="col-md-4">
-            <div
-              className={`${styles.image_container} ${styles.FooterImage}`}
-              onClick={() => router.push("/")}
-            >
-              <Image
-                src={"/images/Final_logo3_png.png"}
-                layout="fill"
-                objectFit="contain"
-                objectPosition={"center"}
-                alt={"logo"}
-              />
-            </div>
-            <div className={`${styles.iconsSec} ${styles.footer_iconSec}`}>
-              {SocialArr &&
-                SocialArr.map((ele) => {
-                  return (
-                    <a
-                      aria-label={ele.name}
-                      href={ele.link}
-                      key={ele.name}
-                      target="_blank"
-                    >
-                      <span className={`${ele.icon}`}></span>
-                    </a>
-                  );
-                })}
-            </div>
-          </div>
-          <div className="col-md-3">
-            <div className={styles.aboutFooter}>
-              <h3>{t("menu.about.about")}</h3>
-              <p>{FooterAbout && FooterAbout}</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <Subscribe
-              type={"about_shadow footer_shadow"}
-              title={"tiny_title"}
-            />
-          </div>
+    <div className={styles.Footer}>
+      <Logo w={100} h={100} />
+      {/* <div className={styles.imageFooter}>
+        <Image src={"/logo.png"} alt={"my logo"} width={100} height={100} />
+      </div> */}
+
+      <div className={styles.LinksFooter}>
+        <Link href={"/projects"}>{t("nav.pro")}</Link>
+        <Link href={"/tools"}>{t("nav.tools")}</Link>
+        <Link href={"/contact"}>{t("nav.contact")}</Link>
+      </div>
+
+      <div className={styles.outLinks}>
+        <a
+          className={styles.iconLink}
+          aria-label="My Facebook Account"
+          href={"https://www.facebook.com/abdo.awny.9/"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="icon-facebook"></span>
+          {/* <i className="pi pi-facebook"></i> */}
+        </a>
+        <a
+          className={styles.iconLink}
+          aria-label="My Twitter Account"
+          href={"https://twitter.com/Abdelrahman2486"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="icon-twitter"></span>
+          {/* <i className="pi pi-twitter"></i> */}
+        </a>
+        <a
+          className={styles.iconLink}
+          aria-label="My Linkedin Account"
+          href={"https://www.linkedin.com/in/abdelrahman-awny/"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="icon-linkedin"></span>
+          {/* <i className="pi pi-linkedin"></i> */}
+        </a>
+      </div>
+
+      <div className={styles.copy}>
+        © 2022{" "}
+        <div className={styles.imageFooter}>
+          {/* <Image src={"/logo.png"} alt={"my logo"} width={50} height={50} /> */}
+          <Logo w={50} h={50} />
         </div>
-        <p className={`text-center ${styles.copyRight}`}>
-          © 2023 CDCENTER. ALL RIGHTS RESERVED
-        </p>
+        All Right Reserved
       </div>
     </div>
   );

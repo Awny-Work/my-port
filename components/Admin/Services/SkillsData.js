@@ -1,0 +1,47 @@
+export const SkillsData = {
+  getData() {
+    return [
+      { name: "CSS3", code: "css3" },
+      { name: "HTML5", code: "html5" },
+      { name: "JavaScript", code: "javascript" },
+      { name: "Bootstrap", code: "bootstrap" },
+      { name: "React.js", code: "react" },
+      { name: "framer", code: "framer" },
+      { name: "Redux", code: "redux" },
+      { name: "Postman", code: "postman" },
+      { name: "Json", code: "json" },
+      { name: "Visual Studio Code", code: "visualstudiocode" },
+      { name: "Github", code: "github" },
+      { name: "Git", code: "git" },
+      { name: "Adobe Premiere", code: "adobepremiere" },
+      { name: "Discord", code: "discord" },
+      { name: "Netlify", code: "netlify" },
+      { name: "Notion", code: "notion" },
+      { name: "Microsoft Office", code: "microsoftoffice" },
+      { name: "Overleaf", code: "overleaf" },
+      { name: "Tailwindcss", code: "tailwindcss" },
+      { name: "Typescript", code: "typescript" },
+      { name: "Mongodb", code: "mongodb" },
+      { name: "Node.js", code: "node-dot-js" },
+      { name: "Upwork", code: "upwork" },
+      { name: "Vue", code: "vue-dot-js" },
+      { name: "PHP", code: "php" },
+      { name: "Next.js", code: "next-dot-js" },
+      { name: "Laravel", code: "laravel" },
+      { name: "Graphql", code: "graphql" },
+      { name: "Filezilla", code: "filezilla" },
+      { name: "Adobe xd", code: "adobexd" },
+      { name: "Adobe After Effects", code: "adobeaftereffects" },
+      { name: "Adobe Audition", code: "adobeaudition" },
+      { name: "Adobe Illustrator", code: "adobeillustrator" },
+      { name: "Adobe Indesign", code: "adobeindesign" },
+      { name: "Adobe Lightroom ", code: "adobelightroomcc" },
+      { name: "Adobe Photoshop", code: "adobephotoshop" },
+      { name: "Nuxt.js", code: "nuxt-dot-js" },
+    ];
+  },
+
+  getCountries() {
+    return Promise.resolve(this.getData());
+  },
+};

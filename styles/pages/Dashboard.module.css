@@ -1,0 +1,147 @@
+.ContolNav {
+  margin-top: 100px;
+  /* margin-bottom: 50px; */
+  padding: 20px 10px 5px;
+  /* background-color: var(--bg-color); */
+  /* background-color: var(--main_color); */
+  background-color: var(--nav-bg);
+  border: var(--border);
+  /* margin: 10px 0; */
+  /* padding: 10px 20px; */
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: var(--box2);
+}
+
+/* .info h4 {
+  margin: 0;
+  color: white;
+  font-weight: bold;
+} */
+
+.ContolNav a {
+  color: var(--black);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.ContolNav a:hover {
+  color: var(--black);
+
+}
+
+.ContolNav .control_nav_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: space-evenly; */
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.Card_image {
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  margin-bottom: 10px;
+  height: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-bottom: 1px solid black;
+}
+
+.main_control_nav {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .ContolNav .nav_pad {
+  text-align: right;
+} */
+
+.ContolNav .nav_pad a {
+  font-size: 18px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.ContolNav a span {
+  font-size: 22px;
+  margin: 0 10px;
+}
+
+.ContolNav .main_control_nav a:last-of-type {
+  border-bottom: none;
+}
+
+/*  start Dash Images */
+.DashCont {
+  margin: 50px auto;
+}
+
+.imagesDash {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+
+.change_store_image {
+  /* width: 50%; */
+  border: 2px dotted var(--black);
+  width: fit-content;
+  margin: 20px auto;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.change_store_image label {
+  color: var(--black);
+  font-size: 18px;
+  width: 100%;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.change_store_image label span {
+  font-size: 22px;
+}
+
+.InputSec {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 100%;
+  /* direction:rtl; */
+}
+
+.change_store_image label:last-of-type {
+  color: #97A6CB;
+  border: 1px solid #EAEAEA;
+  font-weight: bold;
+}
+
+.upoladImagesBtn {
+  color: white;
+  border: 1px solid #EAEAEA;
+  background-color: black;
+  font-weight: bold;
+  margin: 20px auto;
+  width: 200px;
+  padding: 10px 20px;
+  text-align: center;
+  display: block;
+}

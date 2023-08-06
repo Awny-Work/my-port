@@ -1,0 +1,89 @@
+.Tabel {
+  /* direction: ltr; */
+  /* text-align: right; */
+  /* margin-top: 50px; */
+  margin-bottom: 50px;
+}
+
+.Tabel td,
+.Tabel th {
+  text-align: center !important;
+  justify-content: center !important;
+  color: var(--black) !important;
+  background-color: var(--nav-bg);
+  /* cursor: pointer !important; */
+}
+
+.Tabel th {
+  background-color: var(--bg-color) !important;
+
+}
+
+.Tabel th div {
+  /* align-items: center !important; */
+  justify-content: center !important;
+}
+
+.dataTabel {
+  border: 1px solid var(--background);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  overflow: hidden
+}
+
+.Tabel thead {
+  background-color: var(--nav-bg) !important;
+}
+
+.TB_Content {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.TabelButton {
+  background-color: transparent;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  font-size: 22px;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+
+.TabelButton:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.Cancel {
+  color: red;
+  border-color: red;
+}
+
+.Edite {
+  color: var(--main-color);
+  border-color: var(--main-color);
+}
