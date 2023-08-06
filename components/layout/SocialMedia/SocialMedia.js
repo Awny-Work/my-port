@@ -56,7 +56,7 @@ const SocialMedia = ({ to }) => {
           <span>
             <a
               aria-label="our whatsapp number"
-              href={`https://wa.me/00201012894508`}
+              href={`https://wa.me/+201012894508`}
               target="_blank"
               rel="noopener noreferrer"
             >
